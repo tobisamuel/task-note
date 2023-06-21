@@ -36,6 +36,10 @@ export const theme = {
       fontFamily: "Merriweather",
       fontSize: 16,
     },
+    button: {
+      fontSize: 36,
+      fontWeight: "bold",
+    },
   },
 };
 
