@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 40,
+    color: theme.colors.primary,
     borderColor: theme.colors.primary,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },

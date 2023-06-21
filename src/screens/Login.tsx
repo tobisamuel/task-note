@@ -1,22 +1,42 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Pressable, SafeAreaView, StyleSheet, Text } from "react-native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import Button from "@/components/Button";
-import FormTextInput from "@/components/FormTextInput";
+import FormTextInput, { FocusHandle } from "@/components/FormTextInput";
 import { RootStackParamList } from "@/navigator";
 import { theme } from "@/theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Login">;
 
 export default function Login({ navigation }: Props) {
+  const passwordInputRef = useRef<FocusHandle>(null);
+
+  function handleSubmitPress() {
+    if (passwordInputRef.current) {
+      passwordInputRef.current.focus();
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Hey, Welcome Back!</Text>
 
-      <FormTextInput placeholder="Email Address" />
+      <FormTextInput
+        autoCorrect={false}
+        keyboardType="email-address"
+        returnKeyType="next"
+        onSubmitEditing={handleSubmitPress}
+        placeholder="Email"
+      />
 
-      <FormTextInput placeholder="Password" />
+      <FormTextInput
+        ref={passwordInputRef}
+        placeholder="Password"
+        secureTextEntry={true}
+        returnKeyType="done"
+        style={{ marginBottom: 16 }}
+      />
 
       <Button label="Login" onPress={() => {}} />
 

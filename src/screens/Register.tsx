@@ -16,7 +16,7 @@ export default function Register({ navigation }: Props) {
 
       <FormTextInput placeholder="Full Name" />
       <FormTextInput placeholder="Email Address" />
-      <FormTextInput placeholder="Password" />
+      <FormTextInput placeholder="Password" style={{ marginBottom: 16 }} />
 
       <Button label="Login" onPress={() => {}} />
 

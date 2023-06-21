@@ -1,21 +1,20 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, PressableProps, StyleSheet, Text } from "react-native";
 import React from "react";
 import { theme } from "@/theme";
 
-type Props = {
+type Props = PressableProps & {
   disabled?: boolean;
   label: string;
-  onPress: () => void;
 };
 
-const Button = ({ disabled, label, onPress }: Props) => {
+const Button = ({ disabled, label, onPress, ...otherProps }: Props) => {
   const containerStyle = [
     styles.container,
     disabled ? styles.containerDisabled : styles.containerEnabled,
   ];
 
   return (
-    <Pressable style={containerStyle} onPress={onPress}>
+    <Pressable style={containerStyle} onPress={onPress} {...otherProps}>
       <Text style={styles.text}>{label}</Text>
     </Pressable>
   );
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 4,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "rgba(255,255,255,0.7)",
   },
   containerEnabled: {
     opacity: 1,
@@ -44,5 +42,6 @@ const styles = StyleSheet.create({
     color: theme.colors.background,
     textAlign: "center",
     fontWeight: "600",
+    textTransform: "uppercase",
   },
 });
